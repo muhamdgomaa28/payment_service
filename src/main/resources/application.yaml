@@ -1,0 +1,8 @@
+server:
+  port: 8089
+
+braintree:
+  environment: "sanbox"
+  merchant-id: "68d3vpp2jj8k8jqb"
+  public-key: "sxf87n2nkgg7krh9"
+  private-key: "470b583d29f8cb3dad09f94398cdd280"
