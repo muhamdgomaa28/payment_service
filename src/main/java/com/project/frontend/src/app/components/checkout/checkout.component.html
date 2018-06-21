@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row" style="margin-top: 10px;">
+      <!-- <form (ngSubmit)="onSubmit()" method="post"> -->
+          <div class="col-xs-8 ">
+                           <mat-tab-group (selectedIndexChange)="selectedChange($event)" [selectedIndex]="selectedTab" >
+                
+                                          <!--2. Payment Information-->
+                  
+
+                  <mat-tab label="2. Payment Information" >
+                      <div class="panel panel-default ">
+                      
+                          <div class="panel-body ">
+                                <ngx-braintree 
+                                [clientTokenURL]="'http://localhost:8082/api/braintree/getclienttoken'" 
+                                [cartList]="shopingcart"
+                                [cartLists]="ShopingcartService.cartList"
+                                [createPurchaseURL]="'http://localhost:8082/api/braintree/createpurchase'"
+                                (paymentStatus)="onPaymentStatus($event)"
+                                chargeAmount="{{amount}}"
+                                [showPayButton]="true"
+
+                                
+                           >
+                        </ngx-braintree>  
+
+                         <pre>{{ paymentResponse | json }}</pre>
+
+                         </div>
+                        
+                      </div>
+                    
+                  </mat-tab>
+                    </mat-tab-group>
+
+
+              
+                  </div>           
+      </div>
+
+
+</div>
+
