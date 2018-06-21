@@ -1,6 +1,8 @@
 package com.project.model;// default package
 // Generated Nov 23, 2017 7:42:03 PM by Hibernate Tools 5.2.3.Final
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -21,8 +23,11 @@ import javax.persistence.Table;
 public class Product implements java.io.Serializable {
 
 	private Integer id;
+	@JsonIgnore
 	private Brands brands;
+	@JsonIgnore
 	private Business business;
+	@JsonIgnore
 	private Category category;
 	private Double price;
 	private String pic;

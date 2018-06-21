@@ -1,6 +1,8 @@
 package com.project.model;// default package
 // Generated Nov 23, 2017 7:42:03 PM by Hibernate Tools 5.2.3.Final
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -20,7 +22,7 @@ public class Cart implements java.io.Serializable {
 	private CartId id;
 	private Customers customers;
 	private Product product;
-	private Integer quantity;
+	private Double quantity;
 
 	public Cart() {
 	}
@@ -31,7 +33,7 @@ public class Cart implements java.io.Serializable {
 		this.product = product;
 	}
 
-	public Cart(CartId id, Customers customers, Product product, Integer quantity) {
+	public Cart(CartId id, Customers customers, Product product, Double quantity) {
 		this.id = id;
 		this.customers = customers;
 		this.product = product;
@@ -50,7 +52,7 @@ public class Cart implements java.io.Serializable {
 	public void setId(CartId id) {
 		this.id = id;
 	}
-
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customersid", nullable = false, insertable = false, updatable = false)
 	public Customers getCustomers() {
@@ -60,7 +62,7 @@ public class Cart implements java.io.Serializable {
 	public void setCustomers(Customers customers) {
 		this.customers = customers;
 	}
-
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "productid", nullable = false, insertable = false, updatable = false)
 	public Product getProduct() {
@@ -72,11 +74,11 @@ public class Cart implements java.io.Serializable {
 	}
 
 	@Column(name = "quantity")
-	public Integer getQuantity() {
+	public Double getQuantity() {
 		return this.quantity;
 	}
 
-	public void setQuantity(Integer quantity) {
+	public void setQuantity(Double quantity) {
 		this.quantity = quantity;
 	}
 

@@ -10,18 +10,20 @@ import java.util.List;
 /**
  * Created by muhamd gomaa on 12/8/2017.
  */
-public interface  PaymentDao extends CrudRepository<Cart, Integer> {
+public interface  PaymentDao extends CrudRepository<Payment, Integer> {
 
-    @Transactional
-    void deleteByproduct(Product pro);
-
-    @Transactional
-    void deleteByCustomers(Customers c);
+//    @Transactional
+//    void deleteByproduct(Product pro);
+//
+//    @Transactional
+//    void deleteByCustomers(Customers c);
    // List<Brands> findAll();
 
-void deleteAllByCustomersAndProduct(Customers c,Product p);
+//void deleteAllByCustomersAndProduct(Customers c,Product p);
 
-    void deleteAllByProductBusiness(Business B);
+    //void deleteAllByProductBusiness(Business B);
+
+    Payment findByTransactionid(String s);
 
 
 

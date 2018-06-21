@@ -35,36 +35,36 @@ public class TtransactionsDao {
     @Autowired
     private PaymentDao PaymentDao;
 
-    public void delete_cart(int cid, int pid) {
-        Product pr = proDao.findByid(pid);
-        Customers c = cusDao.findByid(cid);
-        PaymentDao.deleteAllByCustomersAndProduct(c, pr);
-
-
-        ////hql ////
-//        Session session = sessionFactory.openSession();
-//        Transaction transaction = session.beginTransaction();
-//        Query q=session.createQuery("delete from Cart c where c.product= :pro and c.customers= :cus");
-//        q.setEntity("pro",pr);
-//        q.setEntity("cus",c);
-//        System.out.println(q.executeUpdate());
-//        transaction.commit();
-//        session.flush();
-
-    }
+//    public void delete_cart(int cid, int pid) {
+//        Product pr = proDao.findByid(pid);
+//        Customers c = cusDao.findByid(cid);
+//      //  PaymentDao.deleteAllByCustomersAndProduct(c, pr);
+//
+//
+//        ////hql ////
+////        Session session = sessionFactory.openSession();
+////        Transaction transaction = session.beginTransaction();
+////        Query q=session.createQuery("delete from Cart c where c.product= :pro and c.customers= :cus");
+////        q.setEntity("pro",pr);
+////        q.setEntity("cus",c);
+////        System.out.println(q.executeUpdate());
+////        transaction.commit();
+////        session.flush();
+//
+//    }
 
     ///////// delete cart belong to  speciffic bussness //////////
-    public void delete_cart_bus(int b_id) {
-
-        Business b = busdao.findByid(b_id);
-        PaymentDao.deleteAllByProductBusiness(b);
-    }
+//    public void delete_cart_bus(int b_id) {
+//
+//        Business b = busdao.findByid(b_id);
+//        PaymentDao.deleteAllByProductBusiness(b);
+//    }
 
 // save object
-    public void insert_order(Object order) {
+    public void save(Object ob) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-       session.saveOrUpdate(order);
+       session.saveOrUpdate(ob);
         transaction.commit();
         session.flush();
 

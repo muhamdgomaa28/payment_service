@@ -14,6 +14,7 @@ import java.util.List;
 
 
     Product findByid(int id);
+    List<Product> findByBusinessId(Integer t);
 
    // List<Product> findProductsByBusiness(Business bus);
 void  deleteAllByBusiness(Business bus);

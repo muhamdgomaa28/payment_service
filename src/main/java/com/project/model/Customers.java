@@ -22,6 +22,7 @@ import javax.persistence.TemporalType;
 public class Customers implements java.io.Serializable {
 
 	private Integer id;
+	private String name;
 	private String address1;
 	private String address2;
 	private String city;
@@ -66,6 +67,15 @@ public class Customers implements java.io.Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	@Column(name = "name")
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 
 	@Column(name = "address1")
 	public String getAddress1() {

@@ -28,9 +28,9 @@ public class Orders implements java.io.Serializable {
 
 	private Integer id;
 	private Customers customers;
-	//private Payment payment;
-	private Shippers shippers;
-	private Double quantity;
+	private Payment payment;
+	//private Shippers shippers;
+	private Integer quantity;
 	private Double discount;
 	// Formats output date when this DTO is passed through JSON
 	@JsonFormat(pattern = "dd-MM-yyyy")
@@ -50,18 +50,18 @@ public class Orders implements java.io.Serializable {
 	public Orders() {
 	}
 
-	public Orders(Customers customers, Shippers shippers) {
+	public Orders(Customers customers ,Payment payment) {
 		this.customers = customers;
-		//this.payment = payment;
-		this.shippers = shippers;
+		this.payment = payment;
+		//this.shippers = shippers;
 	}
 
-	public Orders(Customers customers, Shippers shippers, Double quantity, Double discount,
+	public Orders(Customers customers,Payment payment, Integer quantity, Double discount,
 			Date orderDate, Integer paid, Date paymentDate, Double salesTax, Integer deletedorder,
 			Set<OrderDetail> orderDetails) {
 		this.customers = customers;
-		//this.payment = payment;
-		this.shippers = shippers;
+		this.payment = payment;
+		//this.shippers = shippers;
 		this.quantity = quantity;
 		this.discount = discount;
 		this.orderDate = orderDate;
@@ -94,32 +94,32 @@ public class Orders implements java.io.Serializable {
 		this.customers = customers;
 	}
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "paymentid", nullable = false)
+	public Payment getPayment() {
+		return this.payment;
+	}
+
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
+
 //	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "paymentid", nullable = false)
-//	public Payment getPayment() {
-//		return this.payment;
+//	@JoinColumn(name = "shippersid", nullable = false)
+//	public Shippers getShippers() {
+//		return this.shippers;
 //	}
 //
-//	public void setPayment(Payment payment) {
-//		this.payment = payment;
+//	public void setShippers(Shippers shippers) {
+//		this.shippers = shippers;
 //	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "shippersid", nullable = false)
-	public Shippers getShippers() {
-		return this.shippers;
-	}
-
-	public void setShippers(Shippers shippers) {
-		this.shippers = shippers;
-	}
-
 	@Column(name = "quantity", precision = 22, scale = 0)
-	public Double getQuantity() {
+	public Integer getQuantity() {
 		return this.quantity;
 	}
 
-	public void setQuantity(Double quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 

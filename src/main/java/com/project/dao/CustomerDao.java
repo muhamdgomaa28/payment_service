@@ -11,6 +11,8 @@ public interface  CustomerDao extends CrudRepository<Customers, Integer> {
 
     Customers findByid(int id);
 
+    Customers findByName(String s);
+
 
 
 
